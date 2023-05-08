@@ -1,0 +1,30 @@
+{
+	"song": {
+		"speed": 3,
+		"stage": "farmNight",
+		"player1": "bf",
+		"player2": "dave-splitathon",
+		"player3": null,
+		"events": [
+			[
+				118956.521739131,
+				[
+					[
+						"Change Character",
+						"1",
+						"bambi-splitathon"
+					]
+				]
+			]
+		],
+		"notes": [],
+		"splashSkin": null,
+		"validScore": false,
+		"gfVersion": "gf",
+		"bpm": 230,
+		"arrowSkin": null,
+		"needsVoices": true,
+		"isSkinSep": null,
+		"song": "Half-n-Half"
+	}
+}
