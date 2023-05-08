@@ -44,6 +44,8 @@ class FreeplayState extends MusicBeatState
 
 	public static var fart:Bool = false;
 
+	public static var skipSelect:Array<String> = ['8-28-63', 'opposition'];
+
 	private var InMainFreeplayState:Bool = false;
 	private var isInMods:Bool = false;
 
@@ -120,7 +122,6 @@ class FreeplayState extends MusicBeatState
 				case 'dave':
 					addWeek(['House', 'Insanity'], 1, ['dave']);
 					addWeek(['Polygonized'], 2,['dave3d']);
-					addWeek(['Bonus-Song'], 1,['dave']);
 					addWeek(['Blocked','Corn-Theft','Maze',], 3, ['bambi']);
 					addWeek(['Splitathon'], 12,['splitathon']);
 				case 'old':
@@ -129,7 +130,8 @@ class FreeplayState extends MusicBeatState
 					addWeek(['Old-Blocked', 'Old-Corn-Theft', 'beta-maze', 'Old-Maze'], 3, ['bamberfunny']);
 					addWeek(['Old-Splitathon'], 12, ['Splitathon']);
 				case 'joke':
-                    addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas'], 3, ['bambiJoke']);
+                    addWeek(['Supernovae', 'Glitch', 'Vs-Dave-Thanksgiving', 'vs-dave-christmas', 'Secret-3'], 3, ['bambiJoke']);
+					addWeek(['Overdrive'], 1, ['awesomcpu']);
 					#if !debug
 					if (FlxG.save.data.cheatingFound)
 					#end
@@ -139,15 +141,19 @@ class FreeplayState extends MusicBeatState
 					#end
 						addWeek(['Unfairness'], 5, ['bambi3dUnfair']);
 				case 'extrasandfanmades':
+					addWeek(['Bonus-Song', 'Roots'], 1, ['dave']);
 					addWeek(['Furiosity'], 2, ['dave3d']);
 					addWeek(['Mealie'], 3, ['bambi']);
+					addWeek(['Screwed'], 3, ['bambiMad']);
 					addWeek(['8-28-63'], 1, ['splitathon']);
 					#if !debug
 					if (FlxG.save.data.disruptionFound)
 					#end
 						addWeek(['disruption'], 3, ['bambiPISSED']);
 					addWeek(['Sucked'], 3, ['bamberfunny']);
-					//addWeek(['Monochrome'], 5, ['bambi3d']);
+					addWeek(['Adventure'], 5, ['tristan']);
+					addWeek(['Bonkers'], 3, ['longnosejohn']);
+					addWeek(['Half-N-Half'], 12, ['splitathon']);
 					//addWeek(['Defeat'], 5, ['bambiRage']);
 			    case 'mods':
 					for (i in 0...WeekData.weeksList.length) {

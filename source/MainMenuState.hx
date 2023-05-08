@@ -49,7 +49,7 @@ class MainMenuState extends MusicBeatState
 	
 	public static var daRealEngineVer:String = 'David';
 
-	public static var engineVers:Array<String> = ['David', 'Bandu', 'Bombu', 'Bamburg', 'Golden Tristan', 'Expunged'];
+	public static var engineVers:Array<String> = ['David', 'Bandu', 'Bombu', 'Bamburg', 'Golden Tristan', 'Expunged', 'Ekky'];
 
 	public static var bgPaths:Array<String> = 
 	[
@@ -59,7 +59,26 @@ class MainMenuState extends MusicBeatState
 		'backgrounds/morie',
 		'backgrounds/mantis',
 		'backgrounds/mamakotomi',
-		'backgrounds/T5mpler'
+		'backgrounds/T5mpler',
+		'backgrounds/Lancey',
+		'backgrounds/mepperpint',
+		'backgrounds/neon',
+		'backgrounds/Onuko',
+		'backgrounds/ps',
+		'backgrounds/ramzgaming',
+		'backgrounds/ricee_png',
+		'backgrounds/sk0rbias',
+		'backgrounds/zombought',
+		'backgrounds/Aadsta',
+		'backgrounds/ArtiztGmer',
+		'backgrounds/DeltaKastel',
+		'backgrounds/DeltaKastel2',
+		'backgrounds/DeltaKastel3',
+		'backgrounds/DeltaKastel4',
+		'backgrounds/DeltaKastel5',
+		'backgrounds/diamond man',
+		'backgrounds/Jukebox',
+		'backgrounds/kiazu',
 	];
 
 	override function create()

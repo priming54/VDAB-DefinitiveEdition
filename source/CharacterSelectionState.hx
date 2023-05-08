@@ -18,7 +18,7 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
 {
 	public static var characterData:Array<Dynamic> = [
         //["character name", /*forms are here*/[["form 1 name", 'character json name'], ["form 2 name (can add more than just one)", 'character json name 2']]/*forms end here*/, /*these are score multipliers for arrows*/[1.0, 1.0, 1.0, 1.0], /*hide it completely*/ true], 
-        ["Boyfriend", [["Boyfriend", 'bf']], [1, 1, 1, 1], false], 
+        ["Boyfriend", [["Boyfriend", 'bf'], ["Boyfriend (V2)", 'bf-v2'], ["Boyfriend (V3)", 'bf-v3']], [1, 1, 1, 1], false], 
         ["Dave", [["Dave", 'dave'], ["Dave (Insanity)", 'dave-insanity'], ["Dave (Splitathon)", 'dave-splitathon'], ["Dave (Old)", 'dave-older']], [0.25, 2, 2, 0.25], false], 
         ["3D Dave", [["3D Dave", 'dave-3d'], ["3D Dave (Old)", 'dave-insanity3d']], [2, 0.25, 0.25, 2], false],
         ["Bambi", [["Bambi", 'bambi'], ["Bambi (Old)", 'bambi-old'], ["Bambi (Splitathon)", 'bambi-splitathon'], ["Bambi (Angry)", 'bambi-mad']], [0, 0, 3, 0], false],
@@ -330,6 +330,11 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
                     {
                         acceptCharacter();
                     }
+                if(controls.BACK)
+                    {
+                        LoadingState.loadAndSwitchState(new MainMenuState());
+                        FlxG.sound.play(Paths.sound('cancelMenu'));
+                    }
             }
             else if (!previewMode)
             {
@@ -377,6 +382,13 @@ class CharacterSelectionState extends MusicBeatState //This is not from the D&B 
                                 
                         }
                     }
+                if(controls.BACK)
+                    {
+                        FlxG.sound.play(Paths.sound('cancelMenu'));
+                        LoadingState.loadAndSwitchState(new MainMenuState());
+                    }
+
+                    return;
             }
             else
                 {

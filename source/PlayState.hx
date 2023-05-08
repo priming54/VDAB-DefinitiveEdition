@@ -177,6 +177,8 @@ class PlayState extends MusicBeatState
 	public var dad:Character;
 	public var gf:Character;
 	private var badai:Character;
+	private var baiburg:Character;
+	private var decidave:Character;
 	private var swaggy:Character;
 	private var swagBombu:Character;
 	public var boyfriend:Boyfriend;
@@ -191,7 +193,7 @@ class PlayState extends MusicBeatState
 
 	var isDadGlobal:Bool = true;
 
-	var funnyFloatyBoys:Array<String> = ['dave-3d', 'but-awesome', 'bambi-3d', 'bambi-unfair', 'expunged', 'bambi-piss-3d', 'bambi-scaryooo', 'bambi-god', 'bambi-god2d', 'bambi-hell', 'bombu', 'bombu-expunged', 'badai', 'gary', 'bamburg', 'bamburg-player'];
+	var funnyFloatyBoys:Array<String> = ['dave-3d', 'but-awesome', 'bambi-3d', 'bambi-unfair', 'expunged', 'bambi-piss-3d', 'bambi-scaryooo', 'bambi-god', 'bambi-god2d', 'bambi-hell', 'bombu', 'bombu-expunged', 'badai', 'gary', 'bamburg', 'bamburg-player', 'baiburg', 'tunnel-dave', 'poip'];
 	var funnyBanduFloaty:Array<String> = ['bandu'];
 	var funnySideFloatyBoys:Array<String> = ['bombu', 'bombu-expunged'];
 	var canSlide:Bool = true;
@@ -601,14 +603,14 @@ class PlayState extends MusicBeatState
 					curStage = 'farmNight';
 				case 'furiosity' | 'polygonized':
 					curStage = '3dRed';
-				case 'disposition' | 'disposition_but_awesome':
+				case 'disposition' | 'disposition_but_awesome' | 'disposition-old':
 					curStage = 'bambersHell';
 				case 'old-furiosity':
 					curStage = 'oldRed';
 				case 'cheating' | 'disruption':
 					curStage = '3dGreen';
 				case 'technology':
-					curStage = '3dBombuboi';
+					curStage = '3dTech';
 				case 'unfairness':
 					curStage = '3dScary';
 				default:
@@ -703,6 +705,33 @@ class PlayState extends MusicBeatState
 			insanityRed.shader = testshader.shader;
 			curbg = insanityRed;
 			}
+
+			if (isNewCam.contains(SONG.song.toLowerCase())) {
+				UsingNewCam = true;
+			}
+			
+		case 'bonker':
+			var bg:BGSprite = new BGSprite('dave/sky_night', -600, -200, 0.2, 0.2);
+			add(bg);
+
+			var grass:BGSprite = new BGSprite('johnnose/grass', -350, -300, 0.5, 0.5);
+			grass.setGraphicSize(Std.int(grass.width * 1.25));
+			grass.updateHitbox();
+			add(grass);
+
+			var gates:BGSprite = new BGSprite('johnnose/gates', -200, 350, 0.9, 0.9);
+			gates.setGraphicSize(Std.int(gates.width * 1.2));
+			gates.updateHitbox();
+			add(gates);
+
+			var floor:BGSprite = new BGSprite('johnnose/floor', -200, 500, 0.9, 0.9);
+			floor.setGraphicSize(Std.int(floor.width * 1.2));
+			floor.updateHitbox();
+			add(floor);
+
+			grass.color = 0xFF878787;
+			gates.color = 0xFF878787;
+			floor.color = 0xFF878787;
 
 			if (isNewCam.contains(SONG.song.toLowerCase())) {
 				UsingNewCam = true;
@@ -825,6 +854,12 @@ class PlayState extends MusicBeatState
 
 			UsingNewCam = true;
 
+		case 'davawe': 
+			var bg:BGSprite = new BGSprite('dave/stfu', -600, -200, 0.9, 0.9);
+			add(bg);
+	
+			UsingNewCam = true;
+
 		case '3dRed':
 			{
 				defaultCamZoom = 0.85;
@@ -921,6 +956,32 @@ class PlayState extends MusicBeatState
 				}
 			}
 
+		case '3dTech':
+			{
+				defaultCamZoom = 0.8;
+				curStage = '3dTech';
+				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('dave/bombuland'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set(0.6, 0.6);
+				bg.active = true;
+	
+				add(bg);
+				if(ClientPrefs.waving)
+				{
+				// below code assumes shaders are always enabled which is bad
+				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
+				testshader.waveAmplitude = 0.1;
+				testshader.waveFrequency = 5;
+				testshader.waveSpeed = 2;
+				bg.shader = testshader.shader;
+				curbg = bg;
+				}
+	
+				if (isNewCam.contains(SONG.song.toLowerCase())) {
+					UsingNewCam = true;
+				}
+			}
+
 		case 'bambersHell':
 			{
 				defaultCamZoom = 0.7;
@@ -974,8 +1035,6 @@ class PlayState extends MusicBeatState
 				if(SONG.song.toLowerCase() == "devastation") {
 			    	swaggy = new Character(-1350, 100, 'bandu'); // needs to go to -300, 100 lol
 			    	swagBombu = new Character(-400, 1350, 'bombu');
-
-			        altSong = Song.loadFromJson('alt-notes', 'devastation');
 				}
 
 				var bg:FlxSprite = new FlxSprite(-600, -200).loadGraphic(Paths.image('bambi/purgatory/hamburger'));
@@ -1004,8 +1063,6 @@ class PlayState extends MusicBeatState
 
 					swaggy = new Character(-1350, 100, 'bandu'); // needs to go to -300, 100 lol
 					swagBombu = new Character(-400, 1350, 'bombu');
-	
-					altSong = Song.loadFromJson('alt-notes', 'devastation');
 
 			      	what = new FlxTypedGroup<FlxSprite>();
 			    	add(what);
@@ -1089,6 +1146,28 @@ class PlayState extends MusicBeatState
 				}
 			}
 
+		case '3dMinion':
+			{
+				defaultCamZoom = 0.5;
+				curStage = '3dMinion';
+	
+				swagBG = new FlxSprite(-600, -200).loadGraphic(Paths.image('bambi/minionbg'));
+				//swagBG.scrollFactor.set(0, 0);
+				swagBG.scale.set(1.75, 1.75);
+				//swagBG.updateHitbox();
+				if(ClientPrefs.waving)
+				{
+				// below code assumes shaders are always enabled which is bad
+				var testshader:Shaders.GlitchEffect = new Shaders.GlitchEffect();
+				testshader.waveAmplitude = 0.1;
+				testshader.waveFrequency = 1;
+				testshader.waveSpeed = 2;
+				swagBG.shader = testshader.shader;
+				curbg = swagBG;
+				}
+				add(swagBG);
+			}
+		
 		case '3dFucked':
 			{
 				defaultCamZoom = 0.6;
@@ -1751,6 +1830,13 @@ class PlayState extends MusicBeatState
 		if(SONG.song.toLowerCase() == 'antagonism')
 			{
 				badai = new Character(-300, 100, 'badai');
+				baiburg = new Character(-600, -100, 'baiburg');
+				decidave = new Character(-300, 100, 'tunnel-dave');
+				gf.visible = false;
+			}
+
+		if(SONG.song.toLowerCase() == 'overdrive')
+			{
 				gf.visible = false;
 			}
 
@@ -1913,7 +1999,7 @@ class PlayState extends MusicBeatState
 		}
 		updateTime = showTime;
 
-		timeBarBG = new AttachedSprite('healthBar');
+		timeBarBG = new AttachedSprite('timeBar');
 		timeBarBG.x = timeTxt.x;
 		timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
 		timeBarBG.scrollFactor.set();
@@ -2088,8 +2174,12 @@ class PlayState extends MusicBeatState
 		{
 			case 'supernovae' | 'supernovae-uber':
 				credits = 'Original Song made by ArchWk!';
+			case 'bonkers':
+				credits = 'Its Long Nose John!';
 			case 'fast-food':
 				credits = 'Song Made by randy the slope!';
+			case 'computer' | 'crimson-corridor':
+				credits = 'Song made by Cheemy!';
 			case 'glitch':
 				credits = 'Original Song made by DeadShadow and PixelGH!';
 			case 'mealie':
@@ -2145,10 +2235,8 @@ class PlayState extends MusicBeatState
 				engineName = 'Gary '; 
 			case 9:
 				engineName = 'Jeff '; 
-		/*	case 10:
-				engineName = 'Ringi ';*/
-		/*	case 11:
-				engineName = 'Candu ';*/ //  not adding these guys till the next update lololo
+			case 10:
+				engineName = 'Ekky ';
 		}
 		var creditsText:Bool = credits != '';
 		var textYPos:Float = healthBarBG.y + 52;
@@ -2208,11 +2296,18 @@ class PlayState extends MusicBeatState
 		    case 'shattered' | 'Tyranny':
 				composersWatermark = 'EpicRandomness11';
 			// add villezen's songs here
-			case 'rascal' | 'callback':
+			case 'rascal' | 'callback' | 'inventive':
 				composersWatermark = 'Villezen';
 			// add aadsta's songs here
 			case 'acquaintance':
 				composersWatermark = 'AadstaPinwheel';
+			case 'computer' | 'crimson-corridor':
+				composersWatermark = 'Cheemy';
+			case 'rebound' | 'disposition' | 'roundabout' | 'rsod'| 'disposition-old':
+				composersWatermark = 'ShredBoi';
+			// Ruby
+			case 'adventure':
+				composersWatermark = 'Ruby';
 			//randy the slope
 		    case 'fast-food':
 				composersWatermark = 'randy the slope';
@@ -2226,7 +2321,7 @@ class PlayState extends MusicBeatState
 			case 'supplanted':
                 composersWatermark = 'EpicRandomness (V2), Cynda (V1)';
 			case 'antagonism':
-				composersWatermark = 'BezieAnims, AadstaPinwheel,\nBezieAnims, RazorDC';
+				composersWatermark = 'BezieAnims, AadstaPinwheel, BezieAnims, RazorDC';
 		    case 'upheaval':
 				composersWatermark = 'EpicRandomness11, BezieAnims';
 			case 'triple-threat':
@@ -2242,9 +2337,8 @@ class PlayState extends MusicBeatState
 			case 'disruption':
 				composersWatermark = 'Grantare';
 
-
-			case "beefin'":
-		    	composersWatermark = 'Cynda'; // who will make v2
+			case 'beefin' | 'bonkers' | 'half-n-half':
+		    	composersWatermark = 'Cynda';
 			// fdsgujhosfdjohfsdjgn
 			default:
 				composersWatermark = ' ';
@@ -4329,6 +4423,53 @@ class PlayState extends MusicBeatState
 					spr.scale.y *= 1.15;
 				});
 			}
+	if (SONG.song.toLowerCase() == 'disposition-old')
+			{
+				if (ClientPrefs.laneunderlay){
+					laneunderlay.x -= Math.sin(elapsedtime) * 1.3;
+					laneunderlayOpponent.visible = false;
+				}
+
+				for(str in playerStrums)
+				{
+					str.angle = 60*Math.cos((elapsedtime*2)+str.ID*2);
+					str.y = strumLine.y+(20*Math.sin((elapsedtime*2)+str.ID*2));
+				}
+			
+				for(str in opponentStrums)
+				{
+					str.angle = 60*Math.cos((elapsedtime*2)+str.ID*2);
+					str.y = strumLine.y+(20*Math.sin((elapsedtime*2)+str.ID*2));
+				}
+
+				playerStrums.forEach(function(spr:FlxSprite) // WHY DID THE FPS THING STOP WORKING GRGRGRGGRGRGRGRGGRRG
+				{
+					spr.x -= Math.sin(elapsedtime) * 1.3;
+					spr.scale.x = Math.abs(Math.sin(elapsedtime - 5) * ((spr.ID % 2) == 0 ? 1 : -1)) / 4;
+		
+					spr.scale.y = Math.abs((Math.sin(elapsedtime) * ((spr.ID % 2) == 0 ? 1 : -1)) / 2);
+	
+					spr.scale.x += 0.3;
+					spr.scale.y += 0.3;
+	
+					spr.scale.x *= 1.15;
+					spr.scale.y *= 1.15;
+				});
+				opponentStrums.forEach(function(spr:FlxSprite)
+				{
+					spr.x += Math.sin(elapsedtime) * 1.3;
+
+					spr.scale.x = Math.abs(Math.sin(elapsedtime - 5) * ((spr.ID % 2) == 0 ? 1 : -1)) / 4;
+		
+					spr.scale.y = Math.abs((Math.sin(elapsedtime) * ((spr.ID % 2) == 0 ? 1 : -1)) / 2);
+		
+					spr.scale.x += 0.3;
+					spr.scale.y += 0.3;
+		
+					spr.scale.x *= 1.15;
+					spr.scale.y *= 1.15;
+				});
+			}
 	if (SONG.song.toLowerCase() == 'reality breaking' && ClientPrefs.chromaticAberration)
 		{
 			
@@ -4368,6 +4509,7 @@ class PlayState extends MusicBeatState
 				}
 			#end
 		}
+	
 	if (SONG.song.toLowerCase() == 'unfairness') // fuck you x2
 			{
 				playerStrums.forEach(function(spr:FlxSprite)
@@ -4663,6 +4805,27 @@ class PlayState extends MusicBeatState
 						});
 					}});
 			}
+		case 'crimson-corridor':
+			switch(curBeat)
+			{
+				case 0:
+					hideshit();	
+					evilTrail.visible = false;
+					dad.visible = false;
+				case 1:
+					redTunnel.active = true;
+					redTunnel.visible = true;
+					FlxTween.tween(FlxG.camera, {zoom: 0.67}, 3, {ease: FlxEase.expoOut,});	
+					FlxTween.tween(redTunnel, {"scale.x": 1.15, "scale.y": 1.15}, 5, {ease: FlxEase.circInOut});
+					FlxTween.tween(camHUD, {alpha:0}, 1);
+				case 12:
+					showonlystrums();
+				case 32:
+					dad.visible = true;
+					evilTrail.visible = true;
+					showshit();
+					FlxTween.tween(camHUD, {alpha:1}, 1);
+			}
 		case 'antagonism':
 			if(ClientPrefs.flashing) FlxG.camera.shake(0.005, Conductor.crochet / 1000);
 			switch(curBeat)
@@ -4671,16 +4834,16 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(badai, {"scale.x": 0, "scale.y": 0}, 0.001, {ease: FlxEase.circInOut});
 					FlxTween.tween(redBG, {"scale.x": 0, "scale.y": 0}, 0.001, {ease: FlxEase.circInOut});
 					FlxTween.tween(redTunnel, {"scale.x": 0, "scale.y": 0}, 0.001, {ease: FlxEase.circInOut});
-				case 292:
+				case 256:
 					FlxTween.tween(dad, {"scale.x": 0, "scale.y": 0}, 1, {ease: FlxEase.quadIn});
 					redTunnel.active = true;
 					redTunnel.visible = true;
 					FlxTween.tween(FlxG.camera, {zoom: 0.67}, 3, {ease: FlxEase.expoOut,});	
 					FlxTween.tween(redTunnel, {"scale.x": 1.15, "scale.y": 1.15}, 5, {ease: FlxEase.circInOut});
-				case 350:
+				case 260:
 					badai.visible = true;
 					FlxTween.tween(badai, {"scale.x": 1, "scale.y": 1}, 1, {ease: FlxEase.cubeOut});
-				case 356:
+				case 262:
 					dad.visible = false;
 					badaiTime = true;
 					redBG.visible = true;
@@ -4715,6 +4878,30 @@ class PlayState extends MusicBeatState
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					splitterThonDave('happy');
 				case 8384:
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					splitathonExpression('bambi-corn', -100, 550);
+			}
+		case 'half-n-half':
+			switch (curStep)
+			{
+				case 1824:
+					splitterThonDave('what');
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+					if (BAMBICUTSCENEICONHURHURHUR == null)
+					{
+						BAMBICUTSCENEICONHURHURHUR = new HealthIcon("dave", false);
+						BAMBICUTSCENEICONHURHURHUR.y = healthBar.y - (BAMBICUTSCENEICONHURHURHUR.height / 2);
+						add(BAMBICUTSCENEICONHURHURHUR);
+						BAMBICUTSCENEICONHURHURHUR.cameras = [camHUD];
+						BAMBICUTSCENEICONHURHURHUR.x = -100;
+						FlxTween.linearMotion(BAMBICUTSCENEICONHURHURHUR, -100, BAMBICUTSCENEICONHURHURHUR.y, iconP2.x, BAMBICUTSCENEICONHURHURHUR.y, 0.3, true, {ease: FlxEase.expoInOut});
+						new FlxTimer().start(0.3, FlingCharacterIconToOblivionAndBeyond);
+					}
+				case 2624:
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+				case 3904:
+					FlxG.camera.flash(FlxColor.WHITE, 1);
+				case 4672:
 					FlxG.camera.flash(FlxColor.WHITE, 1);
 					splitathonExpression('bambi-corn', -100, 550);
 			}
@@ -5031,7 +5218,7 @@ class PlayState extends MusicBeatState
 
 		switch (curStage) // didnt want to change this to rgb like on 2.5 (i hate rgb values )
 		{
-			case '3dRed' | '3dScary' | '3dFucked' | 'houseNight' | 'houseroof' | 'farmNight': // Dark character thing
+			case '3dRed' | '3dScary' | '3dFucked' | 'houseNight' | 'houseroof' | 'farmNight' | 'bonker': // Dark character thing
                 {
                     dad.color = 0xFF878787;
                     gf.color = 0xFF878787;
@@ -5451,7 +5638,7 @@ class PlayState extends MusicBeatState
 				case 287:
 					camZooming = false;
 			}
-			case 'disposition':
+			case 'disposition' | 'disposition-old':
 				for (i in 0...opponentStrums.length) {
 				setOnLuas('defaultOpponentStrumX' + i, opponentStrums.members[i].x);
 				setOnLuas('defaultOpponentStrumY' + i, opponentStrums.members[i].y);
@@ -5745,7 +5932,7 @@ class PlayState extends MusicBeatState
 						}
 
 						switch (curSong.toLowerCase()){
-					    	case 'disposition' | 'disposition_but_awesome':
+					    	case 'disposition' | 'disposition_but_awesome' | 'disposition-old':
 						      	if(ClientPrefs.flashing) camHUD.shake(0.0065, 0.1);
 						    	if(health > 0.05) health -= 0.01;
 						     	if(gf.animOffsets.exists('scared')) {
@@ -6711,7 +6898,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.65;
 			}
 
-			if (SONG.song.toLowerCase() == 'rebound' || SONG.song.toLowerCase() == 'disposition' || SONG.song.toLowerCase() == 'upheaval')
+			if (SONG.song.toLowerCase() == 'rebound' || SONG.song.toLowerCase() == 'disposition' || SONG.song.toLowerCase() == 'upheaval' || SONG.song.toLowerCase() == 'disposition-old')
 			{
 				defaultCamZoom = 0.55;
 			}
