@@ -1,78 +1,51 @@
 {
 	"animations": [
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "singLEFT-loop",
+			"fps": 24,
+			"name": "Dad Sing Note LEFT",
 			"indices": [
 				12,
 				13,
 				14,
 				15
-			],
-			"name": "Dad Sing Note LEFT"
+			]
 		},
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "singRIGHT-loop",
+			"fps": 24,
+			"name": "Dad Sing Note RIGHT",
 			"indices": [
 				15,
 				16,
 				17,
 				18
-			],
-			"name": "Dad Sing Note RIGHT"
+			]
 		},
 		{
+			"loop": true,
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
 			"anim": "singUP-loop",
+			"fps": 24,
+			"name": "Dad Sing Note UP",
 			"indices": [
 				56,
 				57,
 				58,
 				59
-			],
-			"name": "Dad Sing Note UP"
-		},
-		{
-			"loop": false,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "hey",
-			"fps": 24,
-			"name": "WhatYouKnowAboutRollingDownInTheDeep",
-			"indices": []
-		},
-		{
-			"loop": true,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "idle-loop",
-			"fps": 12,
-			"name": "Dave Idle",
-			"indices": [
-				10,
-				11,
-				12,
-				12
 			]
 		},
 		{
@@ -80,11 +53,11 @@
 				0,
 				0
 			],
-			"loop": true,
+			"loop": false,
 			"fps": 24,
-			"anim": "singDOWN",
+			"anim": "hey",
 			"indices": [],
-			"name": "down"
+			"name": "WhatYouKnowAboutRollingDownInTheDeep"
 		},
 		{
 			"offsets": [
@@ -92,52 +65,79 @@
 				0
 			],
 			"loop": true,
-			"fps": 24,
-			"anim": "singRIGHT",
-			"indices": [],
-			"name": "right"
+			"fps": 12,
+			"anim": "idle-loop",
+			"indices": [
+				10,
+				11,
+				12,
+				12
+			],
+			"name": "Dave Idle"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
-			"fps": 24,
-			"anim": "singUP",
 			"indices": [],
-			"name": "up"
+			"fps": 24,
+			"anim": "idle",
+			"loop": false,
+			"name": "IDLE"
 		},
 		{
 			"offsets": [
 				0,
 				0
 			],
-			"loop": true,
+			"indices": [],
 			"fps": 24,
 			"anim": "singLEFT",
-			"indices": [],
-			"name": "left"
+			"loop": false,
+			"name": "LEFT"
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "idle",
-			"fps": 4,
-			"name": "idle",
-			"indices": []
+			"indices": [],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"loop": false,
+			"name": "RIGHT"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singDOWN",
+			"loop": false,
+			"name": "DOWN"
+		},
+		{
+			"offsets": [
+				0,
+				0
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "singUP",
+			"loop": false,
+			"name": "UP"
 		}
 	],
 	"no_antialiasing": true,
-	"image": "characters/bombu-Expunged",
+	"image": "characters/Bombai_Sprites",
 	"position": [
-		-140,
+		-540,
 		-390
 	],
-	"healthicon": "bombuExpunged",
+	"healthicon": "bombai",
 	"flip_x": false,
 	"healthbar_colors": [
 		255,
@@ -145,9 +145,9 @@
 		0
 	],
 	"camera_position": [
-		-630,
-		-335
+		0,
+		285
 	],
 	"sing_duration": 6.1,
-	"scale": 1.7
+	"scale": 0.799999999999999
 }
